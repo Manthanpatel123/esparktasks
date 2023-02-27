@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meid="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center"><u>Job Application form</u></h1>
+        <form action="/submit" id="form-container" method="post"> 
+             <!-- <fieldset id="fieldset-container">
+                <legend>Basic Details</legend><br><br>
+                    <table id="table-container" align="center">
+                        <tr>
+                            <td>First Name</td>
+                            <td><input type="text" placeholder="Enter Your Name" name="firstname"></td>
+                            <td>lastname</td>
+                            <td><input type="text" placeholder="Enter Your Last Name" name="lastname"></td>
+                        </tr>
+                        <tr>
+                            <td>Designation</td>
+                            <td><input type="text" name="Designation"></td>
+                            <td>Address 1</td>
+                            <td><input type="text" name="Address_1"></td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td><input type="email" name="email"></td>
+                            <td>Address 2</td>
+                            <td><input type="text" name="Address_2"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone No</td>
+                            <td><input type="number" name="Phone"></td>
+                            <td>city</td>
+                            <td><input type="text" name="city"></td>
+                        </tr>
+                        <tr>
+                           <td>Gender</td>
+                           <td><input type="radio" name="gender"  value="Male" >Male
+                           <input type="radio" name="gender" value="Female" >Female
+                           <input type="radio" name="gender" value="others" >others
+                        </td>
+                           <td>State</td>
+                            <td>
+                                <select name="state">
+                                    <% options1.forEach(option => {%>
+                                        <option value="<%= option.value %>"><%= option.label%></option>
+                                        <% }); %>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zip Code</td>
+                            <td><input type="number" name="zip"></td>
+                            <td>Reletionship </td>
+                            <td>
+                                <select name="reletionship" id="Reletionship_status" id="status">
+                                    <option value="single">single</option>
+                                    <option value="unmarried">married</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date Of Birth</td>
+                            <td><input type="date" name="dob"></td>
+                        </tr>
+                    </table><br><br>
+            </fieldset>  
+            <div class="form-group"> 
+                <fieldset>
+                <legend>Education Details</legend><br><br>
+                    <div id="main" align="center">
+                        <div class="sub" id="education">
+                        Name of Board : <input type="text" name="boardname">
+                        Course name : 
+                        <select name="coursename">
+                            <% options3.forEach(option => {%>
+                                <option value="<%= option.value %>"><%= option.label%></option>
+                                <% }); %>
+                        </select>
+                        university : <input type="text" name="university">
+                        Passing Year : <input type="number" name="passingyear">
+                        Percentage : <input type="number" name="percentage">
+                        <input type="button" value="+" id="add-education-button">
+                        </div><br><br>
+                    </div>
+                </fieldset>
+            </div> 
+            <div class="form-group">
+                <fieldset>
+                <legend>Work Experience</legend><br><br>
+                    <div id="main1" align="center">
+                        <div class="sub1" id="experience">
+                        componey_name : <input type="text" name="componey_name">
+                        designation : <input type="text" name="designation">
+                        from_d : <input type="date" name="from_d">
+                        To_d : <input type="date" name="To_d">
+                        <input type="button" value="+" id="add-work-experience">
+                    </div><br><br>
+                </fieldset>
+            </div>
+            <fieldset>
+                <legend>Language Known</legend><br><br>
+                <div id="main2" align="center">
+                    <div class="sub2" id="languageknown">
+                        <select name="language">
+                            <% options4.forEach(option => {%>
+                                <option value="<%= option.value %>"><%= option.label%></option>
+                                <% }); %>
+                        </select>
+                        read: <input type="checkbox" name="l_read" value="read">
+                        write: <input type="checkbox" name="l_write" value="write">
+                        speak: <input type="checkbox" name="l_speak" value="speak">
+                        <input type="button" value="+" id="add-language">
+                        </div>
+                    </div><br><br>
+            </fieldset>  -->
+            <div class="form-group">
+            <fieldset>
+              <legend>Technologies You Know</legend>
+              <% tec.forEach(function(t) {%>
+                <div>
+                  <label for="<%=t.option_name%>">
+                    <%=t.option_name%>
+                  </label>
+                  <input type="checkbox" value="<%=t.option_name%>" name="technology" />
+                  <label for="beginner">Beginner</label>
+                <input type="radio" name="<%=t.option_name%>a" value="beginner" />
+                <label for="beginner">Intermediate</label>
+                <input type="radio" name="<%=t.option_name%>a" value="Intermediate" />
+                <label for="beginner">Expert</label>
+                <input type="radio" name="<%=t.option_name%>a" value="Expert" />
+                </div>
+                <%});%>
+            </fieldset>
+          </div>
+            <!-- <div>
+                <fieldset>
+                    <legend>Refrences</legend>
+                    <div align="center">
+                    name: <input type="text" id="refrence_name" name="r_name">
+                    contact: <input type="text" id="refrence_contact" name="r_contact">
+                    relation: <input type="text" id="refrence_relation" name="r_relation"><br><br>
+                    name: <input type="text" id="refrence_name" name="r_name">
+                    contact: <input type="text" id="refrence_contact" name="r_contact">
+                    relation: <input type="text" id="refrence_relation" name="r_relation">
+                    </div>
+                </fieldset>
+            </div>  -->
+            <!-- <fieldset>
+                <legend>Prefrence</legend><br><br>
+                <div align="center">
+                    Preffered Location:
+                    <select name="preffered_location"> 
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="gandhinagar">Gandhinaghar</option>
+                        <option value="patan">Patan</option>
+                        <option value="rajkot">rajkot</option>
+                        <option value="surat">surat</option>
+                    </select>
+                    notice_period: <input type="number" name="notice_period">
+                    current_ctc : <input type="number" name="current_ctc">
+                    expected_ctc : <input type="number" name="expected_ctc">
+                    Department :
+                    <select name="p_department">
+                        <% options2.forEach(option => {%>
+                            <option value="<%= option.value %>"><%= option.label%></option>
+                            <% }); %>
+                    </select>
+                </div><br><br>
+            </fieldset>-->
+            <input type="sub" type="submit" value="submit"/>
+        </form>
+         </body>
+        <script>
+
+            const education  = document.getElementById("main");
+            const addeducationbutton = document.getElementById("add-education-button")
+
+            addeducationbutton.addEventListener("click",function(){
+                const item = document.createElement("div");
+                item.classList.add("sub");
+                item.innerHTML=`
+                Name of Board : <input type="text" name="boardname">
+                        Course name : 
+                        <select name="coursename">
+                            <% options3.forEach(option => {%>
+                                <option value="<%= option.value %>"><%= option.label%></option>
+                                <% }); %>
+                        </select>
+                        university : <input type="text" name="university">
+                        Passing Year : <input type="number" name="passingyear">
+                        Percentage : <input type="number" name="percentage">
+            `;
+            education.appendChild(item);
+            }
+            );
+            
+            const work = document.getElementById("main1");
+            const addworkexperience = document.getElementById("add-work-experience")
+
+            addworkexperience.addEventListener("click",function(){
+                const item1 = document.createElement("div");
+                item1.classList.add("sub1");
+                item1.innerHTML=`
+                componey_name : <input type="text" name="componey_name">
+                        designation : <input type="text" name="designation">
+                        from_d : <input type="date" name="from_d">
+                        To_d : <input type="date" name="To_d">
+            `;
+            work.appendChild(item1);
+            }
+            );
+
+            const lan = document.getElementById("main2");
+            const addlanguage = document.getElementById("add-language")
+
+            addlanguage.addEventListener("click",function(){
+                const item2 = document.createElement("div");
+                item2.classList.add("sub2");
+                item2.innerHTML=`
+                <select name="language">
+                            <% options4.forEach(option => {%>
+                                <option value="<%= option.value %>"><%= option.label%></option>
+                                <% }); %>
+                </select>
+                        read: <input type="checkbox" name="l_read">
+                        write: <input type="checkbox" name="l_write">
+                        speak: <input type="checkbox" name="l_speak">
+                        
+            `;
+            lan.appendChild(item2);
+            }
+            );
+
+    </script>
+
+</html>

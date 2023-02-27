@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multiple table</title>
+    <style>
+        table , tr , th , td{
+           
+            border: 5px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            background-color:aqua            
+        }
+    </style>
+</head>
+<body>
+<div id="div1" align="center">
+    <% if(currentpage==1{ %>
+        <button><a href="/page?num=<%=currentpage-1">preview</a></button>
+    <% } %>
+    <% for(let i=1;i< count;i++) %>
+    <% if(currentpage==i){ %>
+        <a href="#"><%=i%></a>
+    <% } else { %>
+    <button> <a href="/page?num=<%=i%"></a></button>
+        <% } %>
+        <% } %>
+        <% if (currentpage==count){ %>
+            <button><a href="/page?num=<%=currentpage+1">next</a></button>
+            <% } %>
+
+</div>
+    <% for (let i=0; i< pages.length; i++){%>
+        <% if(pages[i]===page) {%>
+            <a href="#"><%= pages[i] %></a>
+        
+            <a href="/<%=pages[i]%>"><%= pages[i] %></a>
+    
+
+    <table border="1" align="center" id="mytable">
+        <tr>
+            <td><a href="http://localhost:8080/?num=1&sortorder=id&order_type=asc">id</a></td>
+            <td><a href="http://localhost:8080/?num=1&sortorder=first_name&order_type=asc">first_name</a></td>
+            <td><a href="http://localhost:8080/?num=1&sortorder=last_name&order_type=asc">last_name</a></td>
+            <td><a href="http://localhost:8080/?num=1&sortorder=email_id&order_type=asc">email_id</a></td>
+            <td><a href="http://localhost:8080/?num=1&sortorder=mobile_no&order_type=asc">mobile_no</a></td>
+            <td><a href="http://localhost:8080/?num=1&sortorder=collage_name&order_type=asc">collage_name</a></td>
+            <td><a href="http://localhost:8080/?num=1&sortorder=city_name&order_type=asc">city_name</a></td>
+        </tr>
+        <% data[1].forEach(entery => { %>
+        <tr>
+            <td><%=entery.id %></td>
+            <td><%=entery.first_name %></td>
+            <td><%=entery.last_name %></td>
+            <td><%=entery.email_id %></td>
+            <td><%=entery.mobile_no %></td>
+            <td><%=entery.collage_name %></td>
+            <td><%=entery.city_name %></td>
+        </tr>
+        <% } )%>
+    </table> 
+    
+
+
+    <h2 align="center">Table Data</h2>
+    <table align="center">
+            <tr>
+                <th>id</th>
+                <th>first_name </th>
+                <th>last_name </th>
+                <th>email_id </th>
+                <th>mobile_no </th>
+                <th>collage_name</th>
+                <th>city_name</th>
+            </tr>
+
+            <% for (let i=0;i< data.length;i++){%>
+
+                <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].first_name %></td>
+                    <td><%= data[i].last_name %></td>
+                    <td><%= data[i].email_id %></td>
+                    <td><%= data[i].mobile_no %></td>
+                    <td><%= data[i].collage_name %></td>
+                    <td><%= data[i].city_name %></td>
+                </tr>
+                
+                <% } %>
+    </table>
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        body{
+            background-color: black;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+        #container{
+            padding: 50px;
+            background-color: white;
+            text-align: center;
+        }
+        h2{
+            margin: 0px 0px 10px 0px;
+        }
+        input{
+            width: 200px;
+            margin: 10px 0px;
+            padding: 10px 0px;
+        }
+        #submit{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Login Page</h2>
+        <form action="" onsubmit="return validation()">
+            <input type="text" placeholder=" username" id="username"><br>
+            <p id="usererror"></p>
+            <input type="password" placeholder=" password" id="password"><br>
+            <p id="passerror"></p>
+            
+            <input type="submit" id="submit">
+        </form>
+    </div>
+    <script>
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let flag = 1;
+        
+        function validation(){
+            if (username.value == ""){
+                document.getElementById("usererror").innerHTML="Please enter the name";
+                flag=0;
+            }
+            else if(username.value.length<3){
+                document.getElementById("usererror").innerHTML="please enter 3 or more than 3 words";
+                flag=0;
+            }
+            else{
+                document.getElementById("usererror").innerHTML="";
+                flag=1;
+            }
+
+
+            if(password.value==""){
+                document.getElementById("passerror").innerHTML="Please Enter The password";
+                flag=0;
+            }
+            else{
+                document.getElementById("passerror").innerHTML="";
+                flag=1;
+            }
+
+
+            if(flag){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+    </script>
+    
+    
+</body>
+</html>

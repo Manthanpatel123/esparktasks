@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewData</title>
+    <style>
+    table, td, th {
+        border: 1px solid;
+}
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+}
+#table1 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table1 td, #table1 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table1 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table1 tr:hover {background-color: #ddd;}
+
+#table1 td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #1d9999;
+  color: white;
+}
+.button {
+  background-color: #04AA6D; 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button1 {border-radius: 2px;}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+span{
+  width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #04AA6D; 
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+span:hover{
+  background-color: #1d9999;
+
+}
+
+input[type=submit]:hover {
+    background-color: #1d9999;
+}
+    </style>
+</head>
+<body>
+   
+      <form method="get" action="/search"  align="center">
+        <select >
+            <option value="1">and</option>
+            <option value="1">or</option>
+        </select>
+        <label >Search:</label>
+        <input type="text" name="search" id="search" <%= typeof search !== 'undefined' ? search : '' %>>
+        <input type="submit" value="Go"/>
+      </form> 
+
+      <div><span id="deleteBtn">Delete Data</span></div>
+
+    <form action="/deleteSelected" method="POST">
+    <table id = "table1">
+    <tr>
+        <td>Checkbox</td>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Gender</td>
+        <td>DOB</td>
+        <td>Desigation</td>
+        <td>Addres</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Zipcode</td>
+        <td>Relationship Status</td>
+        <td>Actions</td>
+    </tr>
+    <%for(let i=0; i<record.length; i++) {%>
+      <tr id="tr<%=record[i].id%>">
+        <td><input type="checkbox" value="<%=record[i].id%>" name="selecterows" class="selecterows"
+                id="check"></td>
+        <td><%=record[i].id%></td>
+        <td><%=record[i].first_name%></td>
+        <td><%=record[i].last_name%></td>
+        <td><%=record[i].gender%></td>
+        <td><%=record[i].dob%></td>
+        <td><%=record[i].job_designation%></td>
+        <td><%=record[i].address1%></td>
+        <td><%=record[i].email%></td>
+        <td><%=record[i].phone%></td>
+        <td><%=record[i].city%></td>
+        <td><%=record[i].state%></td>
+        <td><%=record[i].zip%></td>
+        <td><%=record[i].relation_status%></td>
+        <td><p id="delete" onclick="deleteOne('<%= record[i].id%>')">Delete</p></td>
+        <td><a href="edit?id=<%=record[i].id%>">Edit</a></td>
+    </tr>
+    <%}%>
+</table>
+</form>
+<br>
+<%let pages = count_record/limit %>
+<% for(let i=0;i<pages;i++) { %>
+    <span id="<%=i+1%>" onclick="pagination('/views?id=<%=i+1%>&ajax=true')">page<%=i+1%></span>
+    <%}%>
+</body>
+<script>
+  const deletebutton = document.getElementById("deleteBtn");
+  deletebutton.addEventListener('click', () => {
+      var data = [];
+      var ids = document.getElementsByClassName("selecterows");
+      for (let i = 0; i < ids.length; i++) {
+          if (ids[i].checked) {
+              data.push(ids[i].value);
+          }
+      }
+
+      const should_delete = confirm(`Are you sure you want to delete rows with the following IDs: ${data.join(', ')}?`);
+      if (!should_delete) { return; }
+      data.forEach(id => {
+          document.getElementById(`tr${id}`).style.display = "none";
+      });
+
+      const response = fetch(`http://localhost:8080/deletedata?column_id=${data}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              data
+          })
+      }).then(res => res.json())
+      .then(data => {
+          if(data){
+              alert("Deleted successfully!");
+          }
+      })
+  })
+  async function deleteOne(id){
+      const should_delete = confirm(`Are you sure you want to delete rows with the following IDs: ${id}?`);
+      if (!should_delete) { return; }
+      document.getElementById(`tr${id}`).style.display = "none";
+      const response = fetch(`http://localhost:8080/deleteOne?id=${id}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              id
+          })
+      }).then(res => res.json())
+      .then(data => {
+          if(data){
+              alert("Deleted successfully!");
+          }
+      })
+  }
+
+function pagination(x){
+    console.log(x)
+    var table1 = document.getElementById('table1');
+    var str="";
+    fetch(x).then((response)=>{return response.json()}).then((responsedata)=>{
+        record = responsedata;
+       
+        str+=`
+    <tr>
+        <td>Checkbox</td>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Gender</td>
+        <td>DOB</td>
+        <td>Desigation</td>
+        <td>Addres</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Zipcode</td>
+        <td>Relationship Status</td>
+        <td>Actions</td>
+    </tr>`
+for(let i=0;i<record.length;i++){
+    str+=`<tr id="${record[i].id}">
+        <td>
+            <input type="checkbox" value="${record[i].id}" name="selecterows" class="selecterows" ></td>
+        <td>${record[i].id}</td>
+        <td>${record[i].first_name}</td>
+        <td>${record[i].last_name}</td>
+        <td>${record[i].gender}</td>
+        <td>${record[i].dob}</td>
+        <td>${record[i].job_designation}</td>
+        <td>${record[i].address1}</td>
+        <td>${record[i].email}</td>
+        <td>${record[i].phone}</td>
+        <td>${record[i].city}</td>
+        <td>${record[i].state}</td>
+        <td>${record[i].zip}</td>
+        <td>${record[i].relation_status}</td>
+        <td><p id="delete" onclick="deleteOne('${record[i].id}')">Delete</p></td>
+    </tr>`
+}
+console.log(str);
+table1.innerHTML=str;
+    
+    });
+}
+
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#">
+    <style>
+        table{
+            background-color: aqua;
+        }
+    </style>
+
+</head>
+<body>
+    <form action="/search" method="get" align="center">
+        <input id="search" type="text" name="search" placeholder="search"">
+        <select name="multi" style="background-color: darkgoldenrod;">
+            <option value="and">AND</option>
+            <option value="or">OR</option>
+        </select>
+        <input type="submit" value="Go" style="background-color: darkgoldenrod;">
+    </form>
+    <br>
+    <br>
+   
+    <table border="1" style="width: 100%; text-align: center;">
+        <tr>
+            <td><a href="/page?no=1&target=id">id</a></td>
+            <td><a href="/page?no=1&target=fName">First name</a></td>
+            <td><a href="/page?no=1&target=lName">Last name</a></td>
+            <td><a href="/page?no=1&target=sEmail">email</a></td>
+            <td><a href="/page?no=1&target=sEmail">city_name</a></td>
+
+        </tr>
+    <% for(let i=0; i<data.length; i++){ %>
+        
+        <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].first_name %></td>
+            <td><%= data[i].last_name %></td>
+            <td><%= data[i].email_id %></td>
+            <td><%= data[i].city_name %></td>
+        </tr>
+    <% } %>
+    </table>
+    </body>
+</html>

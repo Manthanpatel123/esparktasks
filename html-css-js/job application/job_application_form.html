@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <title>Job Application Form</title>
+    </head>
+    <style>
+        body{
+            background-color:rosybrown
+        }
+        td{
+            margin: 500px;
+            padding: 15;
+            
+        }
+        #education{
+            margin: 10px;
+            padding: 15px;
+        }
+   </style>
+        <body>
+            <h1 align="center"><u>Job Application form</u></h1>
+        <form action="#" id="form-container"> 
+             <fieldset id="fieldset-container">
+                <legend>Basic Details</legend>
+                    <table id="table-container" align="center">
+                        <tr>
+                            <td>First Name</td>
+                            <td><input type="text" placeholder="Enter Your Name"></td>
+                            <td>lastname</td>
+                            <td><input type="text" placeholder="Enter Your Last Name"></td>
+                        </tr>
+                        <tr>
+                            <td>Designation</td>
+                            <td><input type="text"></td>
+                            <td>Address 1</td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td><input type="email"></td>
+                            <td>Address 2</td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone No</td>
+                            <td><input type="number"></td>
+                            <td>city</td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                           <td>Gender</td>
+                           <td><input type="radio" name="gender">Male
+                           <input type="radio" name="gender">Female
+                           <input type="radio" name="gender">others
+                        </td>
+                           <td>State</td>
+                            <td>
+                                <select>
+                                    <option value="gujarat">gujarat</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zip Code</td>
+                            <td><input type="number"></td>
+                            <td>Reletionship </td>
+                            <td>
+                                <select>
+                                    <option value="married">single</option>
+                                    <option value="unmarried">married</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date Of Birth</td>
+                            <td><input type="date"></td>
+                        </tr>
+                    </table>
+            </fieldset>   
+            <div class="form-group"> 
+                <fieldset>
+                <legend>Education Details</legend>
+                    <div id="main" align="center">
+                        <div class="sub" id="education">
+                        Name of Board : <input type="text">
+                        Course name : <input type="text">
+                        university : <input type="text">
+                        Passing Year : <input type="number">
+                        Percentage : <input type="number">
+                        <input type="button" value="+" id="add-education-button">
+                        </div>
+                    </div>
+                    
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                <legend>Work Experience</legend>
+                    <div id="main1" align="center">
+                        <div class="sub1" id="experience">
+                        Company name : <input type="text">
+                        Designation : <input type="text">
+                        From : <input type="datetime">
+                        To : <input type="datetime">
+                        <input type="button" value="+">
+                    </div>
+                </fieldset>
+            </div>
+            <fieldset>
+                <legend>Language Known</legend>
+                    <table>
+                        <tr>
+                            <td><input type="checkbox">Hindi</td>
+                            <td><input type="checkbox">read</td>
+                            <td><input type="checkbox">write</td>
+                            <td><input type="checkbox">speak</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox">English</td>
+                            <td><input type="checkbox">read</td>
+                            <td><input type="checkbox">write</td>
+                            <td><input type="checkbox">speak</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox">gujarati</td>
+                            <td><input type="checkbox">read</td>
+                            <td><input type="checkbox">write</td>
+                            <td><input type="checkbox">speak</td>
+                        </tr>
+                    </table>
+            </fieldset>
+            <fieldset>
+                <legend>Technology Known</legend>
+                <table>
+                    <tr>
+                        <td><input type="checkbox">php</td>
+                        <td><input  name="language" type="radio">Mideator</td>
+                        <td><input  name="language" type="radio">Expert</td>
+                        <td><input  name="language" type="radio">Beginer</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox">mysql</td>
+                        <td><input  name="language" type="radio">Mideator</td>
+                        <td><input  name="language" type="radio">Expert</td>
+                        <td><input  name="language" type="radio">Beginer</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox">laravel</td>
+                        <td><input  name="language" type="radio">Beginer</td>
+                        <td><input  name="language" type="radio">Mideator</td>
+                        <td><input  name="language" type="radio">Expert</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox">oracle</td>
+                        <td><input type="radio"  name="language">Beginer</td>
+                        <td><input type="radio"  name="language">Mideator</td>
+                        <td><input type="radio"  name="language">Expert</td>
+                        <!-- <input type="button" value=""> -->
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Refrence Contact</legend>
+                <div>
+                    Name : <input type="text">
+                    Contact No: <input type="number">
+                    Relation : <input type="text">
+                    <input type="button" value="+">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Prefrence</legend>
+
+                <div>
+                    Preffered Location:
+                    <select>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="gandhinagar">Gandhinaghar</option>
+                        <option value="patan">Patan</option>
+                        <option value="rajkot">rajkot</option>
+                        <option value="surat">surat</option>
+                    </select>
+                    Notice Period: <input type="text">
+                    Notice Period: <input type="text">
+                    Notice Period: <input type="text">
+                    
+                    Department :
+                    <select>
+                        <option value="design">Design</option>
+                        <option value="software developer">Software Developer</option>
+                        <option value="data scientist">Data scientist</option>
+                        <option value="business executive">Business Executive</option>
+                        <option value="hr">HR</option>
+                    </select>
+                </div>
+
+            </fieldset>
+
+
+            </form>
+        </body>
+        <script>
+
+                const education  = document.getElementById("main");
+                const addeducationbutton = document.getElementById("add-education-button")
+
+                addeducationbutton.addEventListener("click",function(){
+                    const item = document.createElement("div");
+                    item.classList.add("sub");
+                    item.innerHTML=`
+                    Name of Board : <input type="text">
+                    Course name : <input type="text">
+                    university : <input type="text">
+                    Passing Year : <input type="number">
+                    percentage :<input type="number">
+                `;
+                education.appendChild(item);
+                }
+               
+                );
+                
+        </script>
+    
+</html>
