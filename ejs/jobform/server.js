@@ -362,12 +362,12 @@ app.post('/deleteOne',(req,res)=>{
     res.json({ans: "deleted successfully!"})
 })
 
-app.get('/retrive', (req, res) => {
-  conn.query("update basic_info set deleted = 0", (err, result) => {
-    if (err) throw err;
-    res.send('retrive succesfull');
-  })
-})
+// app.get('/retrive', (req, res) => {
+//   conn.query("update basic_info set deleted = 0", (err, result) => {
+//     if (err) throw err;
+//     res.send('retrive succesfull');
+//   })
+// })
 
 app.get("/edit", async (req, res) => {
   var id = req.query.id;

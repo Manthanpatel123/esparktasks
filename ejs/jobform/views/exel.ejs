@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       table, td, tr {
+        border: 2px solid black;
+        background-color: #04AA6D;
+        padding: 10px;
+}
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+}
+#table1 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table1 td, #table1 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table1 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table1 tr:hover {background-color: #ddd;}
+
+#table1 td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #1d9999;
+  color: white;
+}
+.button {
+  background-color: #04AA6D; 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button1 {border-radius: 2px;}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+span{
+  width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #04AA6D; 
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+span:hover{
+  background-color: #1d9999;
+
+}
+
+input[type=submit]:hover {
+    background-color: #1d9999;
+}
+    </style>
+</head>
+
+<body>
+    <!-- <form action="/save"> -->
+    <form action="/saveAll" method="post">
+    <table id="row">
+        <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Gender</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Actions</td>
+        </tr>
+
+        <%for(let i=0; i<users.length; i++){%>
+            <tr>
+                <td>
+                    <input type="text" name="user_id"  value="<%=users[i].id%>"  size="1px" style="text-align: center;">
+                </td>
+                <td>
+                    <input type="text" name="first_name" value="<%=users[i].first_name%>" id="fname<%=users[i].id%>">
+                </td>
+                <td>
+                    <input type="text" name="last_name" value="<%=users[i].last_name%>" id="lname<%=users[i].id%>">
+                </td>
+                <td>
+                    <input type="text" name="gender" value="<%=users[i].gender%>" id="gen<%=users[i].id%>">
+                </td>
+                <td>
+                    <input type="text" name="email" value="<%=users[i].email%>" id="email<%=users[i].id%>">
+                </td>
+                <td>
+                    <input type="text" name="phone" value="<%=users[i].phone%>" id="phone<%=users[i].id%>">
+                </td>
+                <td><p onclick="edit(`<%=users[i].id%>`)">Save</p></td>
+                <td><p onclick="del(`<%=users[i].id%>`)">Delete</p></td>
+            </tr>
+            <%}%>
+    </table>
+    <span id="add" onclick="addRow()">+</span><br>
+   <input type="submit" name="submit" value="Save all">
+</body>
+</form>
+
+    <!-- </form> -->
+
+    
+   
+<script>
+    function addRow() {
+        var row = document.getElementById("row");
+        const item = document.createElement("tr");
+        item.classList.add("row-item")
+        item.innerHTML = `
+      
+                    <td></td>
+                    <td>
+                    <input type="text" name="newfirst_name" value="" id="fname">
+                    </td>
+                    <td>
+                        <input type="text" name="newlast_name" value="" id="lname">
+                    </td>
+                    <td>
+                        <input type="text" name="newgender" value="" id="gen">
+                    </td>
+                    <td>
+                        <input type="text" name="newemail" value="" id="email">
+                    </td>
+                    <td>
+                        <input type="text" name="newphone" value="" id="phone">
+                    </td>
+                    <td><p onclick="add()">Save</p></td>
+        `;
+        row.appendChild(item);
+    }
+    async function edit(id) {
+        var id = id;
+        var first_name = document.getElementById(`fname${id}`).value;
+        var last_name = document.getElementById(`lname${id}`).value;
+        var gender = document.getElementById(`gen${id}`).value;
+        var email = document.getElementById(`email${id}`).value;
+        var phone = document.getElementById(`phone${id}`).value;
+        fetch(`http://localhost:8080/save?id=${id}&first_name=${first_name}&last_name=${last_name}&gender=${gender}&email=${email}&phone=${phone}`);
+    }
+    async function add() {
+        var first_name = document.getElementById("fname").value;
+        var last_name = document.getElementById("lname").value;
+        var gender = document.getElementById("gen").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        fetch(`http://localhost:8080/add?first_name=${first_name}&last_name=${last_name}&gender=${gender}&email=${email}&phone=${phone}`);
+    }
+   async function del(uid){
+    var uid = uid;
+    fetch(`http://localhost:8080/delete?uid=${uid}`);
+    location.reload();
+   }
+</script>
+
+</html>
