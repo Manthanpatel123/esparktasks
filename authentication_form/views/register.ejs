@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+   
+    <div class="container"> 
+        <div class="back">
+        <form action="/register" method="post" class="mainform">
+            <div class=""logo>
+                <img src="/img/logo.svg" >
+            </div>
+            <div>
+                <h2>Welcome Back!</h2>
+            </div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name"  id="email">
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email"  id="email">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password"  id="psw">
+            </div>
+            <div>
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" name="cpassword"  id="psw-repeat">
+            </div>
+            <div>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        <form action="/login">
+            <div class="last">
+                <p>Dont have an account?<a href="" type="submit">sign up here</a></p>
+                <!-- <input type="submit" value="login" class="email"> -->
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+
+</html>
