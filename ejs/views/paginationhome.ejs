@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multiple table</title>
+    <style>
+        table , tr , th , td{
+           
+            border: 5px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            background-color:aqua            
+        }
+    </style>
+</head>
+<body>
+
+    <% for (let i=0; i< pages.length; i++){%>
+        <% if(pages[i]===page) {%>
+            <a href="#"><%= pages[i] %></a>
+        <% } else { %>
+            <a href="/<%=pages[i]%>"><%= pages[i] %></a>
+        <% } %>
+    <% } %>
+
+    
+
+
+    <h2 align="center">Table Data</h2>
+    <table align="center">
+            <tr>
+                <th>id</th>
+                <th>first_name </th>
+                <th>last_name </th>
+                <th>email_id </th>
+                <th>mobile_no </th>
+                <th>collage_name</th>
+                <th>city_name</th>
+            </tr>
+
+            <% for (let i=0;i< data.length;i++){%>
+
+                <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].first_name %></td>
+                    <td><%= data[i].last_name %></td>
+                    <td><%= data[i].email_id %></td>
+                    <td><%= data[i].mobile_no %></td>
+                    <td><%= data[i].collage_name %></td>
+                    <td><%= data[i].city_name %></td>
+                </tr>
+                
+                <% } %>
+    </table>
+</body>
+</html>

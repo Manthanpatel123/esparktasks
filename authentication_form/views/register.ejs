@@ -22,34 +22,135 @@
             </div>
             <div>
                 <label for="name">Name:</label>
-                <input type="text" name="name"  id="email">
+                <input type="text" name="name"  id="name" onchange="validname()">
+                <span id="err3"></span>
             </div>
 
             <div>
                 <label for="email">Email</label>
-                <input type="text" name="email"  id="email">
+                <input type="text" name="email"  id="emailInput" onchange="validemail()">
+                <span id="err2"></span>
             </div>
 
             <div>
                 <label for="password">Password</label>
-                <input type="password" name="password"  id="psw">
+                <input type="password" name="password"  id="psw1" onchange="validpass()" > 
+                <span id="err"></span>
             </div>
             <div>
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" name="cpassword"  id="psw-repeat">
+                <input type="password" name="cpassword"  id="psw2" onchange="validpass()"> 
+                <span id="err1"></span>
             </div>
             <div>
-                <input type="submit" value="Register">
+                <input type="submit" value="Register" id="bt"  disabled>
             </div>
         </form>
         <form action="/login">
             <div class="last">
-                <p>Dont have an account?<a href="" type="submit">sign up here</a></p>
+                <p>Dont have an account?<a href="/login" type="submit">sign up here</a></p>
                 <!-- <input type="submit" value="login" class="email"> -->
             </div>
         </form>
+        
         </div>
     </div>
 </body>
 
+<script>
+    document.getElementById("bt").disabled = true;
+
+    
+    function validname(){
+        var name = document.getElementById("name").value;
+        console.log(name)
+
+        if(name == ""){
+            document.getElementById("err3").innerHTML = "**Fill the username please!";
+            return false;
+        }
+        else if(name.length < 2){
+            document.getElementById("err3").innerHTML = "username must be contain 2 or more character";
+            return false;
+        }
+        else if(!(isNaN(name))){
+            document.getElementById("err3").innerHTML = "username must be contain characters";
+            return false;
+        }
+        else{
+            document.getElementById("bt").disabled = false;
+            document.getElementById("err3").innerHTML = "";
+            return true;
+        }
+    }
+
+    function validemail() {
+        const email = document.getElementById("emailInput").value;
+        var atposition = email.indexOf("@");
+        var dotposition = email.lastIndexOf(".");
+        document.getElementById("bt").disabled = true;
+        
+
+        fetch(`/finduser?email=${email}`)
+        .then(res => res.json())
+        .then(data => {
+        const message = document.getElementById('err2');
+
+        console.log(data)
+            if (data.exists) {
+                message.innerHTML = "Email Already Exist";
+            }
+            else if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+                document.getElementById("err2").innerHTML = " Please enter valid email";
+            }
+            else if (email == "") {
+                document.getElementById("err2").innerHTML = " name can not empthy";
+            }
+            else  {
+                    // document.getElementById("bt").disabled = false;
+                    document.getElementById("err2").innerHTML = "";
+            }
+        })
+        .catch(err => console.log(err));
+      
+        
+    }
+
+    function validpass(){
+        document.getElementById("bt").disabled = true;
+        var pw1 = document.getElementById("psw1").value;
+        var pw2 = document.getElementById("psw2").value;
+        if (pw1 == "") {
+            document.getElementById("err").innerHTML = "**Fill the password please!";
+            return false;
+        }
+        else if (pw2 == "") {
+            document.getElementById("err1").innerHTML = "**Fill the password please!";
+            return false;
+        }
+        else if (pw1.length < 8 || pw1.length > 15) {
+            document.getElementById("err").innerHTML = "**Password length must be atleast 8 characters not exceed 15 characters";
+            return false;
+        }
+        else if (pw2.length < 8 || pw2.length > 15) {
+            document.getElementById("err1").innerHTML = "**Password length must be atleast 8 characters not exceed 15 characters";
+            return false;
+        }
+        else if(pw2!=pw1){
+            document.getElementById("err1").innerHTML = "**Password does not match ";
+            document.getElementById("err").innerHTML = "**Password does not match";
+            return false;
+        }
+        else{
+            document.getElementById("bt").disabled = false;
+            document.getElementById("err1").innerHTML = "";
+            document.getElementById("err").innerHTML = "";
+            return true
+        }
+    }
+
+
+  
+        
+</script>
 </html>

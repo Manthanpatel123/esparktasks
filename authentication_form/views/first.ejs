@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejs Document</title>
+    <style>
+        table , tr , th , td{
+           
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            background-color: yellowgreen;
+            
+        }
+        div{
+            padding: 10px;
+            margin: 100px;
+
+        }
+        /* tr{
+            padding: 100px;
+            margin: 100px;
+        }
+        th{
+            padding: 10px;
+            margin: 10px;
+        
+        } */
+    </style>
+</head>
+<body>
+
+    <h2 align="center">Table Data</h2>
+
+    <div>
+    <table  align="center">
+            <tr>
+                <th>id</th>
+                <th>first_name </th>
+                <th>last_name </th>
+                <th>email_id </th>
+                <th>mobile_no </th>
+                <th>collage_name</th>
+                <th>city_name</th>
+            </tr>
+            <% for (let i=0;i<10;i++){%>
+            <tr>
+                <td><%= data[0][i].id %></td>
+                <td><%= data[0][i].first_name %></td>
+                <td><%= data[0][i].last_name %></td>
+                <td><%= data[0][i].email_id %></td>
+                <td><%= data[0][i].mobile_no %></td>
+                <td><%= data[0][i].collage_name %></td>
+                <td><%= data[0][i].city_name %></td>
+            </tr>
+            <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[1][i].id %></td>
+            <td><%= data[1][i].first_name %></td>
+            <td><%= data[1][i].last_name %></td>
+            <td><%= data[1][i].email_id %></td>
+            <td><%= data[1][i].mobile_no %></td>
+            <td><%= data[1][i].collage_name %></td>
+            <td><%= data[1][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[2][i].id %></td>
+            <td><%= data[2][i].first_name %></td>
+            <td><%= data[2][i].last_name %></td>
+            <td><%= data[2][i].email_id %></td>
+            <td><%= data[2][i].mobile_no %></td>
+            <td><%= data[2][i].collage_name %></td>
+            <td><%= data[2][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[3][i].id %></td>
+            <td><%= data[3][i].first_name %></td>
+            <td><%= data[3][i].last_name %></td>
+            <td><%= data[3][i].email_id %></td>
+            <td><%= data[3][i].mobile_no %></td>
+            <td><%= data[3][i].collage_name %></td>
+            <td><%= data[3][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[4][i].id %></td>
+            <td><%= data[4][i].first_name %></td>
+            <td><%= data[4][i].last_name %></td>
+            <td><%= data[4][i].email_id %></td>
+            <td><%= data[4][i].mobile_no %></td>
+            <td><%= data[4][i].collage_name %></td>
+            <td><%= data[4][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[5][i].id %></td>
+            <td><%= data[5][i].first_name %></td>
+            <td><%= data[5][i].last_name %></td>
+            <td><%= data[5][i].email_id %></td>
+            <td><%= data[5][i].mobile_no %></td6
+            <td><%= data[5][i].collage_name %></td>
+            <td><%= data[5][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[6][i].id %></td>
+            <td><%= data[6][i].first_name %></td>
+            <td><%= data[6][i].last_name %></td>
+            <td><%= data[6][i].email_id %></td>
+            <td><%= data[6][i].mobile_no %></td>
+            <td><%= data[6][i].collage_name %></td>
+            <td><%= data[6][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[7][i].id %></td>
+            <td><%= data[7][i].first_name %></td>
+            <td><%= data[7][i].last_name %></td>
+            <td><%= data[7][i].email_id %></td>
+            <td><%= data[7][i].mobile_no %></td>
+            <td><%= data[7][i].collage_name %></td>
+            <td><%= data[7][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[8][i].id %></td>
+            <td><%= data[8][i].first_name %></td>
+            <td><%= data[8][i].last_name %></td>
+            <td><%= data[8][i].email_id %></td>
+            <td><%= data[8][i].mobile_no %></td>
+            <td><%= data[8][i].collage_name %></td>
+            <td><%= data[8][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[9][i].id %></td>
+            <td><%= data[9][i].first_name %></td>
+            <td><%= data[9][i].last_name %></td>
+            <td><%= data[9][i].email_id %></td>
+            <td><%= data[9][i].mobile_no %></td>
+            <td><%= data[9][i].collage_name %></td>
+            <td><%= data[9][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    <table  align="center">
+        <tr>
+            <th>id</th>
+            <th>first_name </th>
+            <th>last_name </th>
+            <th>email_id </th>
+            <th>mobile_no </th>
+            <th>collage_name</th>
+            <th>city_name</th>
+        </tr>
+        <% for (let i=0;i<10;i++){%>
+        <tr>
+            <td><%= data[10][i].id %></td>
+            <td><%= data[10][i].first_name %></td>
+            <td><%= data[10][i].last_name %></td>
+            <td><%= data[10][i].email_id %></td>
+            <td><%= data[10][i].mobile_no %></td>
+            <td><%= data[10][i].collage_name %></td>
+            <td><%= data[10][i].city_name %></td>
+        </tr>
+        <% } %>
+    </table><br>
+    </div>
+</body>
+</html>

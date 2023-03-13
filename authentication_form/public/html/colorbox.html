@@ -1,0 +1,55 @@
+<html>
+    <title>Changing Color Cube</title>
+</head>
+<style>
+    body{
+        background-color: brown;
+    }
+    #tbl{
+        height: 16cm;
+        width: 16cm;
+        background-color: aqua;
+    }
+</style>
+<body>
+    <h1 align="center">Changing Color Cube</h1>
+    <table id="tbl" align="center" border="1">
+        <tr>
+            <td id="td1" onclick="generate()"></td>
+        </tr>
+    </table>
+</body>
+<script>
+
+    let manthan_counter = 2;
+
+    function generate(){
+        var manthan_rand = Math.floor(Math.random()*manthan_counter)+1; 
+        var manthan_rand = Math.floor(Math.random()*manthan_counter)+1;
+
+        var manthan = "";
+        manthan = "<table>";
+            for(var i = 1 ; i<=manthan_counter;i++){
+                manthan = manthan + "<tr>";
+                    for(var j = 1;j<=manthan_counter;j++)
+                        if(manthan_rand==i && manthan_rand==j){
+                            manthan= manthan + "<td onclick='generate()' id='td2'>" + "</td>";
+                        }
+                        else{
+                            manthan= manthan + "<td id = 'td3'>" + "</td>";
+                        }
+                        manthan = manthan + "</tr>";
+            }manthan = manthan + "</table>";
+            manthan_counter++;
+            document.getElementById("tbl").innerHTML = manthan;
+            document.getElementById("tbl").style.backgroundColor = color();
+            document.getElementById("td2").style.backgroundColor=color();
+            document.getElementById("td2").style.opacity = 0.5;
+    }
+    function color(){
+        var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        return randomColor;
+    }
+
+</script>
+</html>

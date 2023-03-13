@@ -37,7 +37,7 @@ app.get('/:page',(req,res)=>{
         for(let i=1;i<=totalpages;i++){
             pages.push(i);
         }
-        res.render('home',{data:result,page:page,pages:pages})
+        res.render('paginationhome',{data:result,page:page,pages:pages})
     })
 });
  

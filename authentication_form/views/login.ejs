@@ -10,27 +10,34 @@
 <body>
     <div class="container">
         <div class="back">
-        <form action="/login" method="post">
+        <form action="/login" method="post" >
             <div>
                 <h1>User Login</h1>
             </div>
 
             <div>
                 <label for="email">Email</label>
-                <input type="text" name="email" placeholder="Enter Email">
+                <input type="text" name="email" id="emailInput" placeholder="Enter Email" >
+                <span id="err2"></span>
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Enter Password">
+                <input type="password" name="password" id="password" placeholder="Enter Password">
+                <span id="err1"></span>
             </div>
             <div>
                 <p>Forget Password?<a href="" type="submit">Click here</a></p>
             </div>
             <div>
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" id="bt">
             </div>
         </form>
         </div>
     </div>
 </body>
+<script>
+
+        
+
+</script>
 </html>

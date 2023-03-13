@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <style>
+    body{
+        background-color: yellow;
+    }
+    .cell{
+        width:80px; 
+        height:80px;
+        border:2px solid;
+        box-shadow: 0 0 0 2px;
+        line-height: 85px;
+        font-size: 50px;
+        cursor:grab;
+        margin: auto;
+        padding: auto;
+    }
+    #gamecontainer{
+        font-family:'serif';
+        text-align: center;
+        background-color:cyan;
+    }
+    #cellcontainer{
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        width: 225px;
+        margin: auto;
+        background-color: blanchedalmond;
+    }
+    #restartbtn{
+        background-color: black;
+        color: yellow;
+        padding-bottom: 15px;
+        margin: 15px ;
+    }
+    marquee{
+        background-color: aqua;
+    }
+    </style>
+</head>
+<body>
+    <div id="gamecontainer">
+        <h1><u>Tic Tac Toe</u></h1>
+        <table id="cellcontainer">
+            <tr>
+                <td cellIndex="0" class="cell"></td>
+                <td cellIndex="1" class="cell"></td>
+                <td cellIndex="2" class="cell"></td>
+            </tr>
+            <tr>
+                <td cellIndex="3" class="cell"></td>
+                <td cellIndex="4" class="cell"></td>
+                <td cellIndex="5" class="cell"></td>
+            </tr>
+            <tr>
+                <td cellIndex="6" class="cell"></td>
+                <td cellIndex="7" class="cell"></td>
+                <td cellIndex="8" class="cell"></td>
+            </tr>
+        </table>
+        <h2 id="status"></h2>
+        <marquee id="counter1">counter X :</marquee>
+        <marquee id="counter2">counter O :</marquee>
+        <input type="button" value="Restart" id="restartbtn">
+    </div>
+    <script>
+
+        const manthan_cells = document.querySelectorAll(".cell");                                         
+        const manthan_status = document.querySelector("#status");
+        const manthan_restartbtn = document.querySelector("#restartbtn");
+
+        const manthan_win = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+        let manthan_check = ["", "", "", "", "", "", "", "", ""];
+
+        let manthan_player1 = "o";
+
+        let manthan_flag = false;
+        
+        let manthan_counter1 = 1;
+        let manthan_counter2 = 1;
+        
+        startgame();
+       
+        function startgame(){
+            manthan_cells.forEach(cell=>cell.addEventListener("click", cellclicke));
+            manthan_restartbtn.addEventListener("click", restartgame);
+            // manthan_status.textContent=document.write(manthan_player1+"'s turn");
+            manthan_status.textContent = document.getElementById("status").innerText= manthan_player1 + "'s turn";
+            manthan_flag = true;
+
+        }
+
+        function cellclicke(){
+            //this function can refer cellclick function.
+            const cellIndex = this.getAttribute("cellIndex");
+
+            if(manthan_check[cellIndex] != "" || !manthan_flag){
+                return;
+            }
+
+            cellupdate(this, cellIndex);//this can return cellclick function to the cellupdate.
+            checkwinner();
+        }
+
+        function cellupdate(cell, index){
+            manthan_check[index] = manthan_player1;
+            cell.textContent = manthan_player1;
+        }
+
+        function checkwinner(){
+            let won = false;
+
+            for(let i = 0; i < manthan_win.length; i++){
+                const manthan_condition = manthan_win[i];
+                const manthan_cellA = manthan_check[manthan_condition[0]];
+                const manthan_cellB = manthan_check[manthan_condition[1]];
+                const manthan_cellC = manthan_check[manthan_condition[2]];
+
+            if(manthan_cellA == "" || manthan_cellB == "" || manthan_cellC == ""){
+                continue;
+            }
+            if(manthan_cellA==manthan_cellB && manthan_cellB==manthan_cellC){
+                won = true;
+                break;
+            }
+        }
+            if(won){
+                // manthan_status.textContent=document.write(manthan_player1+" wins");
+                manthan_status.textContent = document.getElementById("status").innerText= manthan_player1 + " wins";
+                manthan_flag = false;
+                if(manthan_status.textContent == 'x wins')
+                {
+                    document.getElementById("counter1").innerHTML = "Counter " + manthan_status.textContent + " " + (manthan_counter1++);
+                }
+                else
+                {
+                    document.getElementById("counter2").innerHTML = "Counter " + manthan_status.textContent + " " + (manthan_counter2++);
+                }
+            }
+            else if(!manthan_check.includes("")){
+                manthan_status.textContent = 'Draw!';
+                manthan_flag = false;
+                // document.getElementById("counter2").innerHTML = manthan_status.textContent + (manthan_counter1++);
+            }
+            else{
+                changeplayer();
+            }
+        }
+        function changeplayer(){
+            manthan_player1 = (manthan_player1 == "o") ? "x" : "o"; //player1 is x when current player is o.
+            // manthan_status.textContent=document.write(manthan_player1+"'s turn");
+            manthan_status.textContent = document.getElementById("status").innerText= manthan_player1 + "'s turn";
+
+        }
+        function restartgame(){
+            manthan_player1 = "o";
+
+            manthan_check = ["", "", "", "", "", "", "", "", ""];
+            // manthan_status.textContent=document.write(manthan_player1+"'s turn");
+            manthan_status.textContent = document.getElementById("status").innerText= manthan_player1 + "'s turn";
+            manthan_cells.forEach(cell => cell.textContent = "");
+            manthan_flag = true;
+        }
+    </script>
+</body>
+</html>
+
+
